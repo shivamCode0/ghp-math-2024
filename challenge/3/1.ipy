@@ -1,0 +1,23 @@
+import itertools as it
+
+
+def q(x):
+    return x % 7
+
+
+a = []
+for david, stewart, bill, vinton, dennis, malik, aaron in it.permutations(range(7)):
+    a = (
+        q(david) == q(vinton + 1)
+        and q(stewart) == q(aaron + 2)
+        and q(bill) == q(malik - 3)
+        and q(dennis) == q(stewart - 1)
+        and dennis == 4
+        # and min(abs(dennis - bill), 7 - abs(dennis - bill)) == min(abs(dennis - vinton), 7 - abs(dennis - vinton))
+    )
+    if a:
+        days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        david, stewart, bill, vinton, dennis, malik, aaron = [
+            days[i] for i in [david, stewart, bill, vinton, dennis, malik, aaron]
+        ]
+        print(f"{david=} {stewart=} {bill=} {vinton=} {dennis=} {malik=} {aaron=}")
